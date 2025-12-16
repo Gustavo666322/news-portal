@@ -1,0 +1,42 @@
+{% extends 'news/base.html' %}
+
+{% block title %}{{ news.title }}{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <h1 class="card-title">{{ news.title }}</h1>
+        <p class="text-muted">
+            <strong>Автор:</strong> {{ news.author.user.username }} | 
+            <strong>Дата публикации:</strong> {{ news.created_at|date:"d.m.Y H:i" }} | 
+            <strong>Рейтинг:</strong> {{ news.rating }}
+        </p>
+        
+        <div class="mt-4">
+            {{ news.text|linebreaks }}
+        </div>
+
+        <div class="mt-4">
+            <strong>Категории:</strong>
+            {% for category in news.categories.all %}
+                <span class="badge bg-secondary">{{ category.name }}</span>
+            {% empty %}
+                <span class="text-muted">Без категории</span>
+            {% endfor %}
+        </div>
+
+        <div class="mt-4 btn-group">
+            <a href="{% url 'news_list' %}" class="btn btn-secondary">Назад к списку</a>
+            {% if user.is_authenticated %}
+                {% if news.post_type == 'NW' %}
+                    <a href="{% url 'news_edit' news.pk %}" class="btn btn-warning">Редактировать</a>
+                    <a href="{% url 'news_delete' news.pk %}" class="btn btn-danger">Удалить</a>
+                {% else %}
+                    <a href="{% url 'article_edit' news.pk %}" class="btn btn-warning">Редактировать</a>
+                    <a href="{% url 'article_delete' news.pk %}" class="btn btn-danger">Удалить</a>
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

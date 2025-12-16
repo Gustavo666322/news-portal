@@ -10,16 +10,12 @@ class Author(models.Model):
     def update_rating(self):
         post_rating = self.post_set.aggregate(
             post_rating_sum=Sum('rating')).get('post_rating_sum', 0) * 3
-
         comment_rating = self.user.comment_set.aggregate(
             comment_rating_sum=Sum('rating')).get('comment_rating_sum', 0)
-
-        from .models import Comment
         post_comment_rating = Comment.objects.filter(
             post__author=self).aggregate(
             post_comment_rating_sum=Sum('rating')
         ).get('post_comment_rating_sum', 0)
-
         self.rating = post_rating + comment_rating + post_comment_rating
         self.save()
 
@@ -68,9 +64,6 @@ class Post(models.Model):
 class PostCategory(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return f'{self.post.title} - {self.category.name}'
 
 
 class Comment(models.Model):

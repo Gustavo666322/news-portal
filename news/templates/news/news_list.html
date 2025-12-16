@@ -1,0 +1,94 @@
+{% extends 'news/base.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">{{ title }}</h1>
+
+{% if news_list %}
+    {% for news in news_list %}
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title">{{ news.title }}</h5>
+            <p class="card-text">{{ news.preview }}</p>
+            <p class="text-muted small">
+                <strong>Автор:</strong> {{ news.author.user.username }} |
+                <strong>Дата:</strong> {{ news.created_at|date:"d.m.Y H:i" }} |
+                <strong>Рейтинг:</strong> {{ news.rating }}
+            </p>
+            <div class="btn-group">
+                <a href="{% url 'news_detail' news.pk %}" class="btn btn-sm btn-primary">Читать далее</a>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'news_edit' news.pk %}" class="btn btn-sm btn-warning">Редактировать</a>
+                    <a href="{% url 'news_delete' news.pk %}" class="btn btn-sm btn-danger">Удалить</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+{% else %}
+    <div class="alert alert-info">
+        Новостей пока нет. Будьте первым, кто добавит новость!
+    </div>
+{% endif %}
+
+<!-- Пагинация -->
+{% if page_obj.has_other_pages %}
+<nav aria-label="Навигация по страницам">
+    <ul class="pagination justify-content-center">
+        <!-- Кнопка "Первая" -->
+        {% if page_obj.number > 1 %}
+        <li class="page-item">
+            <a class="page-link" href="?page=1" aria-label="Первая">
+                <span aria-hidden="true">&laquo;&laquo;</span>
+            </a>
+        </li>
+        {% endif %}
+
+        <!-- Кнопка "Предыдущая" -->
+        {% if page_obj.has_previous %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Предыдущая">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        {% endif %}
+
+        <!-- Номера страниц -->
+        {% for page_num in page_range %}
+            {% if page_num == page_obj.number %}
+            <li class="page-item active">
+                <span class="page-link">{{ page_num }}</span>
+            </li>
+            {% else %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_num }}">{{ page_num }}</a>
+            </li>
+            {% endif %}
+        {% endfor %}
+
+        <!-- Кнопка "Следующая" -->
+        {% if page_obj.has_next %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Следующая">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+        {% endif %}
+
+        <!-- Кнопка "Последняя" -->
+        {% if page_obj.number != paginator.num_pages %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ paginator.num_pages }}" aria-label="Последняя">
+                <span aria-hidden="true">&raquo;&raquo;</span>
+            </a>
+        </li>
+        {% endif %}
+    </ul>
+</nav>
+
+<p class="text-center text-muted mt-2">
+    Страница {{ page_obj.number }} из {{ paginator.num_pages }}
+</p>
+{% endif %}
+{% endblock %}

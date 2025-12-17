@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from .views import become_author
 
 urlpatterns = [
     # Главная страница со списком новостей
@@ -20,4 +21,5 @@ urlpatterns = [
     path('articles/create/', views.ArticleCreateView.as_view(), name='article_create'),
     path('articles/<int:pk>/edit/', views.PostUpdateView.as_view(), name='article_edit'),
     path('articles/<int:pk>/delete/', views.PostDeleteView.as_view(), name='article_delete'),
+    path('become-author/', become_author, name='become_author'),
 ]

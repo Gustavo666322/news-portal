@@ -5,33 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="35cf27f9-8a9f-456e-a5a7-d91186358b39" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/NewsPortalNew.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NewsPortalNew/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NewsPortalNew/asgi.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NewsPortalNew/settings.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NewsPortalNew/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NewsPortalNew/wsgi.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manage.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/news/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/news/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/news/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/news/migrations/0001_initial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/news/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/news/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/news/templates/news/detail.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/news/templates/news/list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/news/templatetags/custom_filters.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/news/templatetags/init.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/news/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/news/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/news/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/create_groups.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news/signals.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/account/base_account.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/account/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/account/signup.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/become_author.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsPortalNew/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/NewsPortalNew/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsPortalNew/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/NewsPortalNew/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/news/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/news/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/news/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/news/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/news/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/news/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,13 +27,16 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/news/views.py" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
@@ -60,22 +49,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;django.template.preview.state&quot;: &quot;SHOW_EDITOR_AND_PREVIEW&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\NewsPortalNew\templates\includes" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="NewsPortalNew" type="Python.DjangoServer" factoryName="Django server">
       <module name="NewsPortalNew" />
@@ -118,7 +113,13 @@
       <option name="presentableId" value="Default" />
       <updated>1765446743478</updated>
       <workItem from="1765446744488" duration="149000" />
-      <workItem from="1765446957818" duration="1832000" />
+      <workItem from="1765446957818" duration="2215000" />
+      <workItem from="1765714276831" duration="3177000" />
+      <workItem from="1765800167765" duration="3566000" />
+      <workItem from="1765803802362" duration="238000" />
+      <workItem from="1765883345078" duration="243000" />
+      <workItem from="1765883608079" duration="1117000" />
+      <workItem from="1765969110638" duration="2647000" />
     </task>
     <servers />
   </component>

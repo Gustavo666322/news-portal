@@ -2,13 +2,14 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.core.paginator import Paginator
-
 from .models import Post
 from .forms import PostForm
 from .filters import NewsFilter
+from django.contrib.auth.models import Group
+
 
 
 # ========== СПИСОК НОВОСТЕЙ (С ПАГИНАЦИЕЙ) ==========
@@ -100,9 +101,9 @@ def news_search(request):
 
 
 # ========== СОЗДАНИЕ НОВОСТИ ==========
-class NewsCreateView(LoginRequiredMixin, CreateView):
-    model = Post
-    form_class = PostForm
+class NewsCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
+    permission_required = 'news.add_post'
+    login_url = '/accounts/login/'
     template_name = 'news/post_form.html'
     success_url = reverse_lazy('news_list')
 
@@ -168,3 +169,12 @@ class NewsDetailView(DetailView):
     def get_queryset(self):
         """Показываем только новости"""
         return Post.objects.filter(post_type=Post.NEWS)
+
+# ========== СТАТЬ АВТОРОМ ==========
+@login_required
+def become_author(request):
+    """Добавить пользователя в группу authors"""
+    authors_group = Group.objects.get(name='authors')
+    request.user.groups.add(authors_group)
+    messages.success(request, 'Поздравляем! Теперь вы автор!')
+    return redirect('news_list')

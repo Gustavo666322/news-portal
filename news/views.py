@@ -5,10 +5,11 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.core.paginator import Paginator
-from .models import Post
+from .models import Post, Category, Subscription
 from .forms import PostForm
 from .filters import NewsFilter
 from django.contrib.auth.models import Group
+from django.shortcuts import get_object_or_404
 
 
 
@@ -102,6 +103,8 @@ def news_search(request):
 
 # ========== СОЗДАНИЕ НОВОСТИ ==========
 class NewsCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
+    model = Post  # ← ДОБАВЬ ЭТУ СТРОКУ
+    form_class = PostForm  # ← ДОБАВЬ ЭТУ СТРОКУ (или укажи поля через fields)
     permission_required = 'news.add_post'
     login_url = '/accounts/login/'
     template_name = 'news/post_form.html'
@@ -178,3 +181,26 @@ def become_author(request):
     request.user.groups.add(authors_group)
     messages.success(request, 'Поздравляем! Теперь вы автор!')
     return redirect('news_list')
+
+@login_required
+def subscribe_category(request, category_id):
+    category = get_object_or_404(Category, id=category_id)
+    Subscription.objects.get_or_create(user=request.user, category=category)
+    messages.success(request, f'Вы подписались на категорию "{category.name}"')
+    return redirect('news_list')
+
+@login_required
+def unsubscribe_category(request, category_id):
+    category = get_object_or_404(Category, id=category_id)
+    Subscription.objects.filter(user=request.user, category=category).delete()
+    messages.success(request, f'Вы отписались от категории "{category.name}"')
+    return redirect('news_list')
+
+@login_required
+def category_list(request):
+    categories = Category.objects.all()
+    subscribed_ids = Subscription.objects.filter(user=request.user).values_list('category_id', flat=True)
+    return render(request, 'news/category_list.html', {
+        'categories': categories,
+        'subscribed_ids': subscribed_ids,
+    })

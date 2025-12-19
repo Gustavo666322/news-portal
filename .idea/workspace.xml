@@ -5,16 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="35cf27f9-8a9f-456e-a5a7-d91186358b39" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/create_groups.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/news/signals.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/account/base_account.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/account/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/account/signup.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/become_author.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NewsPortalNew/celery.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news/tasks.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news/templates/emails/new_article.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news/templates/emails/weekly_digest.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news/templates/emails/welcome.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news/templates/news/category_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsPortalNew/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/NewsPortalNew/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NewsPortalNew/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/NewsPortalNew/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NewsPortalNew/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/NewsPortalNew/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/news/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/news/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/news/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/news/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/news/signals.py" beforeDir="false" afterPath="$PROJECT_DIR$/news/signals.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/news/templates/news/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/news/templates/news/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/news/templates/news/news_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/news/templates/news/news_detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/news/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/news/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/news/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/news/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
@@ -27,8 +31,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -119,7 +123,8 @@
       <workItem from="1765803802362" duration="238000" />
       <workItem from="1765883345078" duration="243000" />
       <workItem from="1765883608079" duration="1117000" />
-      <workItem from="1765969110638" duration="2647000" />
+      <workItem from="1765969110638" duration="4436000" />
+      <workItem from="1766140889394" duration="3193000" />
     </task>
     <servers />
   </component>

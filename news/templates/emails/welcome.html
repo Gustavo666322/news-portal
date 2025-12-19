@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .header { background-color: #007bff; color: white; padding: 20px; text-align: center; }
+        .content { padding: 20px; background-color: #f8f9fa; }
+        .button { display: inline-block; padding: 10px 20px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Добро пожаловать в News Portal!</h1>
+        </div>
+        <div class="content">
+            <p>Здравствуйте, {{ user.username }}!</p>
+            <p>Спасибо за регистрацию на нашем новостном портале.</p>
+            <p>Теперь вы можете:</p>
+            <ul>
+                <li>Читать новости и статьи</li>
+                <li>Подписываться на интересные категории</li>
+                <li>Получать уведомления о новых статьях</li>
+                <li>Стать автором и публиковать свои материалы</li>
+            </ul>
+            <p>Чтобы начать, перейдите на наш сайт:</p>
+            <p style="text-align: center;">
+                <a href="http://127.0.0.1:8000/news/" class="button">Перейти к новостям</a>
+            </p>
+            <p>С уважением,<br>Команда News Portal</p>
+        </div>
+    </div>
+</body>
+</html>

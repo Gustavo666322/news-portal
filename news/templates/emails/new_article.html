@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .article { border: 1px solid #ddd; padding: 15px; margin: 15px 0; background-color: #f9f9f9; }
+        .button { display: inline-block; padding: 10px 20px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Новая статья в категории {{ article.categories.first.name }}</h2>
+
+        <div class="article">
+            <h3>{{ article.title }}</h3>
+            <p><strong>Автор:</strong> {{ article.author.user.username }}</p>
+            <p><strong>Дата:</strong> {{ article.created_at|date:"d.m.Y H:i" }}</p>
+            <p>{{ article.preview }}</p>
+            <p>
+                <a href="http://127.0.0.1:8000/news/{{ article.id }}/" class="button">
+                    Читать полностью
+                </a>
+            </p>
+        </div>
+
+        <p>Вы получили это письмо, потому что подписаны на категорию "{{ article.categories.first.name }}"</p>
+        <p>
+            <a href="http://127.0.0.1:8000/news/category/{{ article.categories.first.id }}/unsubscribe/">
+                Отписаться от этой категории
+            </a>
+        </p>
+    </div>
+</body>
+</html>

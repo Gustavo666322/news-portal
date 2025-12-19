@@ -20,6 +20,13 @@ urlpatterns = [
     # Статьи: создание, редактирование, удаление
     path('articles/create/', views.ArticleCreateView.as_view(), name='article_create'),
     path('articles/<int:pk>/edit/', views.PostUpdateView.as_view(), name='article_edit'),
-    path('articles/<int:pk>/delete/', views.PostDeleteView.as_view(), name='article_delete'),
+    path('articles/<int:pk>/delete/', views.PostUpdateView.as_view(), name='article_delete'),
+
+    # Стать автором
     path('become-author/', become_author, name='become_author'),
+
+    # Управление подписками (НОВЫЕ URL)
+    path('categories/', views.category_list, name='category_list'),
+    path('category/<int:category_id>/subscribe/', views.subscribe_category, name='subscribe_category'),
+    path('category/<int:category_id>/unsubscribe/', views.unsubscribe_category, name='unsubscribe_category'),
 ]

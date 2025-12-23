@@ -6,6 +6,39 @@ from datetime import timedelta
 from django.contrib.auth.models import User
 from .models import Post, Subscription
 
+@shared_task
+def send_notifications_to_subscribers(post_id):
+    try:
+        post = Post.objects.get(id=post_id)
+    except Post.DoesNotExist:
+        return f"Post {post_id} не найден"
+
+    categories = post.categories.all()
+    subscribers = User.objects.filter(
+        subscription__category__in=categories
+    ).distinct()
+
+    for user in subscribers:
+        if user.email:
+            subject = f'Новая запись в категории {", ".join([cat.name for cat in categories])}'
+            message = render_to_string('email/new_post_notification.html', {
+                'user': user,
+                'post': post,
+                'categories': categories,
+            })
+            send_mail(
+                subject,
+                '',
+                'noreply@newportal.com',
+                [user.email],
+                html_message=message,
+                fail_silently=False,
+            )
+
+    return f"Уведомления отправлены {subscribers.count()} подписчикам"
+
+
+
 
 def send_weekly_email(user, articles):
     """Отправка еженедельной рассылки конкретному пользователю"""
@@ -39,26 +72,33 @@ def send_weekly_email(user, articles):
 
 @shared_task
 def send_weekly_digest():
-    """Основная задача для еженедельной рассылки"""
     week_ago = timezone.now() - timedelta(days=7)
-
-    # Получаем всех пользователей с подписками
     users_with_subs = User.objects.filter(
         subscription__isnull=False
     ).distinct()
 
     for user in users_with_subs:
-        # Получаем категории пользователя
-        user_categories = Subscription.objects.filter(user=user).values_list('category', flat=True)
+        user_categories = Subscription.objects.filter(
+            user=user
+        ).values_list('category', flat=True)
 
-        # Статьи за неделю в категориях пользователя
         articles = Post.objects.filter(
-            post_type=Post.ARTICLE,
             created_at__gte=week_ago,
             categories__id__in=user_categories
         ).distinct()
 
-        if articles.exists():
-            send_weekly_email(user, articles)
+        if articles.exists() and user.email:
+            message = render_to_string('email/weekly_digest.html', {
+                'user': user,
+                'articles': articles,
+            })
+            send_mail(
+                'Еженедельная подборка новостей',
+                '',
+                'noreply@newportal.com',
+                [user.email],
+                html_message=message,
+                fail_silently=False,
+            )
 
     return f"Еженедельная рассылка отправлена {users_with_subs.count()} пользователям"

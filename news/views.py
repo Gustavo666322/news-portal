@@ -10,6 +10,7 @@ from .forms import PostForm
 from .filters import NewsFilter
 from django.contrib.auth.models import Group
 from django.shortcuts import get_object_or_404
+from .tasks import send_notifications_to_subscribers
 
 
 
@@ -110,17 +111,20 @@ class NewsCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     template_name = 'news/post_form.html'
     success_url = reverse_lazy('news_list')
 
-    def form_valid(self, form):
-        """Устанавливаем тип поста как "новость" перед сохранением"""
-        post = form.save(commit=False)
-        post.post_type = Post.NEWS  # Устанавливаем тип "новость"
-        return super().form_valid(form)
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Создание новости'
         return context
 
+    def form_valid(self, form):
+        post = form.save(commit=False)
+        post.post_type = Post.NEWS
+        post.save()
+        form.save_m2m()
+
+        send_notifications_to_subscribers.delay(post.id)
+
+        return super().form_valid(form)
 
 # ========== СОЗДАНИЕ СТАТЬИ ==========
 class ArticleCreateView(LoginRequiredMixin, CreateView):
@@ -130,10 +134,10 @@ class ArticleCreateView(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('news_list')
 
     def form_valid(self, form):
-        """Устанавливаем тип поста как "статья" перед сохранением"""
         post = form.save(commit=False)
-        post.post_type = Post.ARTICLE  # Устанавливаем тип "статья"
-        return super().form_valid(form)
+        post.post_type = Post.ARTICLE
+        post.save()
+        form.save_m2m()
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

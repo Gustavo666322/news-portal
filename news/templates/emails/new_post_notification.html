@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>Новая запись в ваших подписках!</h2>
+    <p>Привет, {{ user.username }}!</p>
+    <p>Опубликована новая запись в категории:
+        {% for cat in categories %}
+            <strong>{{ cat.name }}</strong>{% if not forloop.last %}, {% endif %}
+        {% endfor %}
+    </p>
+    <h3>{{ post.title }}</h3>
+    <p>{{ post.preview }}</p>
+    <a href="http://127.0.0.1:8000/news/{{ post.id }}/">Читать полностью</a>
+</body>
+</html>

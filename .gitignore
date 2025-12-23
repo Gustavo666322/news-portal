@@ -8,8 +8,8 @@ db.sqlite3
 
 # Celery
 celerybeat-schedule
-celerybeat-schedule*
-celery/
+celerybeat-schedule-shm
+celerybeat-schedule-wal
 
 # Питон
 __pycache__/

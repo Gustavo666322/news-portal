@@ -1,15 +1,17 @@
 """
 Django settings for NewsPortalNew project.
 """
-
+import sys
 import os
 from pathlib import Path
+from .logging_config import LOGGING
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure--nwb9kwgga0sj+ql67ni-r(@ken@js_c4bh=h1-ubi8pe51&d1'
 DEBUG = True
 ALLOWED_HOSTS = []
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -111,7 +113,8 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+ADMINS = [('Admin Name', 'admin@example.com')]
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'localhost'
 EMAIL_PORT = 1025
 EMAIL_HOST_USER = ''

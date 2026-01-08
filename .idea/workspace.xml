@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="35cf27f9-8a9f-456e-a5a7-d91186358b39" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/news/templates/emails/new_post_notification.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NewsPortalNew/logging_config.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NewsPortalNew/celery.py" beforeDir="false" afterPath="$PROJECT_DIR$/NewsPortalNew/celery.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NewsPortalNew/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/NewsPortalNew/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/news/tasks.py" beforeDir="false" afterPath="$PROJECT_DIR$/news/tasks.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/news/templates/emails/weekly_digest.html" beforeDir="false" afterPath="$PROJECT_DIR$/news/templates/emails/weekly_digest.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/news/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/news/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +17,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -124,7 +120,12 @@
       <workItem from="1766319045290" duration="955000" />
       <workItem from="1766320220890" duration="1030000" />
       <workItem from="1766399743378" duration="3442000" />
-      <workItem from="1766476523877" duration="338000" />
+      <workItem from="1766476523877" duration="1274000" />
+      <workItem from="1766494122985" duration="50000" />
+      <workItem from="1766767957720" duration="1135000" />
+      <workItem from="1767696871712" duration="1953000" />
+      <workItem from="1767702519958" duration="7000" />
+      <workItem from="1767903177706" duration="877000" />
     </task>
     <servers />
   </component>
